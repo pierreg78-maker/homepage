@@ -1,0 +1,79 @@
+
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: var(--font-sans); }
+  .hero { padding: 3rem 2rem 2rem; text-align: center; }
+  .hero-name { font-size: 13px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--color-text-tertiary); margin-bottom: 0.5rem; }
+  .hero-title { font-size: 28px; font-weight: 500; color: var(--color-text-primary); margin-bottom: 0.75rem; line-height: 1.3; }
+  .hero-sub { font-size: 15px; color: var(--color-text-secondary); max-width: 420px; margin: 0 auto; line-height: 1.6; }
+  .divider { width: 32px; height: 1px; background: var(--color-border-secondary); margin: 2rem auto; }
+  .section-label { font-size: 12px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-text-tertiary); text-align: center; margin-bottom: 1.5rem; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 16px; padding: 0 2rem 2rem; }
+  .card { background: var(--color-background-primary); border: 0.5px solid var(--color-border-tertiary); border-radius: 18px; padding: 1.5rem 1.25rem 1.25rem; display: flex; flex-direction: column; align-items: flex-start; transition: border-color 0.2s; text-decoration: none; cursor: pointer; }
+  .card:hover { border-color: var(--color-border-primary); }
+  .card-icon { width: 40px; height: 40px; border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 1rem; font-size: 18px; flex-shrink: 0; }
+  .icon-purple { background: #EEEDFE; color: #534AB7; }
+  .icon-teal { background: #E1F5EE; color: #0F6E56; }
+  .icon-coral { background: #FAECE7; color: #993C1D; }
+  .icon-blue { background: #E6F1FB; color: #185FA5; }
+  .card-title { font-size: 14px; font-weight: 500; color: var(--color-text-primary); margin-bottom: 0.4rem; line-height: 1.4; }
+  .card-desc { font-size: 13px; color: var(--color-text-secondary); line-height: 1.6; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; flex: 1; }
+  .card-link { margin-top: 1rem; font-size: 12px; color: var(--color-text-tertiary); display: flex; align-items: center; gap: 4px; }
+  .card-link i { font-size: 13px; }
+  .cv-row { padding: 0 2rem 3rem; }
+  .cv-card { border: 0.5px dashed var(--color-border-tertiary); border-radius: 18px; padding: 1.25rem 1.5rem; display: flex; align-items: center; gap: 1rem; text-decoration: none; cursor: pointer; transition: border-color 0.2s, background 0.2s; }
+  .cv-card:hover { background: var(--color-background-secondary); border-color: var(--color-border-secondary); }
+  .cv-icon { width: 40px; height: 40px; border-radius: 12px; background: #F1EFE8; display: flex; align-items: center; justify-content: center; font-size: 18px; color: #5F5E5A; flex-shrink: 0; }
+  .cv-text { flex: 1; }
+  .cv-title { font-size: 14px; font-weight: 500; color: var(--color-text-primary); }
+  .cv-sub { font-size: 13px; color: var(--color-text-tertiary); }
+  .cv-arrow { color: var(--color-text-tertiary); font-size: 16px; }
+  .tag { display: inline-block; font-size: 11px; padding: 2px 8px; border-radius: 20px; margin-bottom: 0.75rem; font-weight: 500; }
+  .tag-new { background: #E1F5EE; color: #0F6E56; }
+</style>
+
+<h2 class="sr-only">Portfolio de projets de Pierre — page d'accueil</h2>
+
+<div class="hero">
+  <p class="hero-name">Pierre G.</p>
+  <h1 class="hero-title">Créateur de projets numériques</h1>
+  <p class="hero-sub">Développeur, créateur de contenus et explorateur d'outils d'IA — voici quelques-uns de mes projets.</p>
+</div>
+
+<div class="divider"></div>
+
+<p class="section-label">Projets</p>
+
+<div class="grid">
+  <a class="card" href="https://pierreg78-maker.github.io/Text_to_speech_3000/" target="_blank">
+    <div class="card-icon icon-purple"><i class="ti ti-volume" aria-hidden="true"></i></div>
+    <p class="card-title">Text to Speech 3000</p>
+    <p class="card-desc">Une application web de synthèse vocale qui convertit du texte en parole avec plusieurs voix disponibles, idéale pour la lecture à voix haute ou l'accessibilité.</p>
+    <div class="card-link"><i class="ti ti-external-link" aria-hidden="true"></i> Voir le projet</div>
+  </a>
+
+  <a class="card" href="https://pierreg78-maker.github.io/flashcards/" target="_blank">
+    <div class="card-icon icon-teal"><i class="ti ti-cards" aria-hidden="true"></i></div>
+    <p class="card-title">Flashcards</p>
+    <p class="card-desc">Un outil d'apprentissage par cartes mémorisables. Révisez du vocabulaire, des définitions ou des concepts à votre rythme grâce à un système de répétition espacée.</p>
+    <div class="card-link"><i class="ti ti-external-link" aria-hidden="true"></i> Voir le projet</div>
+  </a>
+
+  <a class="card" href="https://pierreg78-maker.github.io/Casse-briques/" target="_blank">
+    <div class="card-icon icon-coral"><i class="ti ti-device-gamepad-2" aria-hidden="true"></i></div>
+    <p class="card-title">Casse-briques</p>
+    <p class="card-desc">Un jeu de casse-briques classique revisité, jouable directement dans le navigateur. Réflexes, adresse et niveaux progressifs pour une expérience arcade fidèle.</p>
+    <div class="card-link"><i class="ti ti-external-link" aria-hidden="true"></i> Voir le projet</div>
+  </a>
+</div>
+
+<div class="cv-row">
+  <a class="cv-card" href="#" onclick="alert('CV bientôt disponible !')">
+    <div class="cv-icon"><i class="ti ti-file-text" aria-hidden="true"></i></div>
+    <div class="cv-text">
+      <p class="cv-title">Mon CV</p>
+      <p class="cv-sub">Parcours, compétences et expériences</p>
+    </div>
+    <i class="ti ti-arrow-right cv-arrow" aria-hidden="true"></i>
+  </a>
+</div>
