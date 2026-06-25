@@ -1,1 +1,1 @@
-Simple landing page pour mon portfolio
+Simple page pour mon portfolio. Work in progress
