@@ -1,79 +1,142 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌟 Portfolio - Pierre G.</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <style>
+        body {
+            background: linear-gradient(135deg, #a78bfa 0%, #ec4899 100%);
+        }
+        .card {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .card:hover {
+            transform: translateY(-12px) scale(1.05);
+            box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.4);
+        }
+        .hero {
+            background: rgba(255,255,255,0.15);
+            backdrop-filter: blur(12px);
+        }
+    </style>
+</head>
+<body class="min-h-screen text-white font-sans">
 
-<style>
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  body { font-family: var(--font-sans); }
-  .hero { padding: 3rem 2rem 2rem; text-align: center; }
-  .hero-name { font-size: 13px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--color-text-tertiary); margin-bottom: 0.5rem; }
-  .hero-title { font-size: 28px; font-weight: 500; color: var(--color-text-primary); margin-bottom: 0.75rem; line-height: 1.3; }
-  .hero-sub { font-size: 15px; color: var(--color-text-secondary); max-width: 420px; margin: 0 auto; line-height: 1.6; }
-  .divider { width: 32px; height: 1px; background: var(--color-border-secondary); margin: 2rem auto; }
-  .section-label { font-size: 12px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-text-tertiary); text-align: center; margin-bottom: 1.5rem; }
-  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 16px; padding: 0 2rem 2rem; }
-  .card { background: var(--color-background-primary); border: 0.5px solid var(--color-border-tertiary); border-radius: 18px; padding: 1.5rem 1.25rem 1.25rem; display: flex; flex-direction: column; align-items: flex-start; transition: border-color 0.2s; text-decoration: none; cursor: pointer; }
-  .card:hover { border-color: var(--color-border-primary); }
-  .card-icon { width: 40px; height: 40px; border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 1rem; font-size: 18px; flex-shrink: 0; }
-  .icon-purple { background: #EEEDFE; color: #534AB7; }
-  .icon-teal { background: #E1F5EE; color: #0F6E56; }
-  .icon-coral { background: #FAECE7; color: #993C1D; }
-  .icon-blue { background: #E6F1FB; color: #185FA5; }
-  .card-title { font-size: 14px; font-weight: 500; color: var(--color-text-primary); margin-bottom: 0.4rem; line-height: 1.4; }
-  .card-desc { font-size: 13px; color: var(--color-text-secondary); line-height: 1.6; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; flex: 1; }
-  .card-link { margin-top: 1rem; font-size: 12px; color: var(--color-text-tertiary); display: flex; align-items: center; gap: 4px; }
-  .card-link i { font-size: 13px; }
-  .cv-row { padding: 0 2rem 3rem; }
-  .cv-card { border: 0.5px dashed var(--color-border-tertiary); border-radius: 18px; padding: 1.25rem 1.5rem; display: flex; align-items: center; gap: 1rem; text-decoration: none; cursor: pointer; transition: border-color 0.2s, background 0.2s; }
-  .cv-card:hover { background: var(--color-background-secondary); border-color: var(--color-border-secondary); }
-  .cv-icon { width: 40px; height: 40px; border-radius: 12px; background: #F1EFE8; display: flex; align-items: center; justify-content: center; font-size: 18px; color: #5F5E5A; flex-shrink: 0; }
-  .cv-text { flex: 1; }
-  .cv-title { font-size: 14px; font-weight: 500; color: var(--color-text-primary); }
-  .cv-sub { font-size: 13px; color: var(--color-text-tertiary); }
-  .cv-arrow { color: var(--color-text-tertiary); font-size: 16px; }
-  .tag { display: inline-block; font-size: 11px; padding: 2px 8px; border-radius: 20px; margin-bottom: 0.75rem; font-weight: 500; }
-  .tag-new { background: #E1F5EE; color: #0F6E56; }
-</style>
+    <!-- Hero -->
+    <header class="hero py-16 text-center border-b border-white/30">
+        <div class="max-w-4xl mx-auto px-6">
+            <h1 class="text-6xl font-bold mb-4 flex items-center justify-center gap-4">
+                🌿 <span class="bg-white/20 px-6 py-2 rounded-3xl">Mon Atelier Mémoire & Créa</span> 🌟
+            </h1>
+            <p class="text-2xl max-w-lg mx-auto">
+                Stimule ton cerveau, libère ta créativité et amuse-toi !
+            </p>
+            <p class="mt-4 text-lg opacity-90">Jeux fun • Créations artistiques • Outils pratiques</p>
+        </div>
+    </header>
 
-<h2 class="sr-only">Portfolio de projets de Pierre — page d'accueil</h2>
+    <main class="max-w-6xl mx-auto px-6 py-12">
 
-<div class="hero">
-  <p class="hero-name">Pierre G.</p>
-  <h1 class="hero-title">Créateur de projets numériques ridiculement simples</h1>
-  <p class="hero-sub">Voici quelques-unes de mes réalisations</p>
-</div>
+        <!-- Section Jeux de Mémoire -->
+        <section class="mb-16">
+            <h2 class="text-4xl font-bold mb-8 flex items-center gap-3">
+                <i class="fas fa-brain text-yellow-300"></i> Jeux de Mémoire
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                <!-- Memory -->
+                <a href="https://pierreg78-maker.github.io/Atelier/Memory/" class="card bg-white/10 backdrop-blur-md rounded-3xl p-8 border border-white/20 hover:border-yellow-300">
+                    <div class="text-6xl mb-6">🃏</div>
+                    <h3 class="text-2xl font-semibold mb-2">Memory</h3>
+                    <p class="opacity-80">Retrouve les paires de cartes identiques et entraîne ta mémoire visuelle !</p>
+                    <span class="inline-block mt-6 text-sm bg-yellow-300 text-purple-900 px-4 py-1.5 rounded-full font-medium">Concentration</span>
+                </a>
 
-<div class="divider"></div>
+                <!-- Simon -->
+                <a href="https://pierreg78-maker.github.io/Atelier/Simon/" class="card bg-white/10 backdrop-blur-md rounded-3xl p-8 border border-white/20 hover:border-pink-300">
+                    <div class="text-6xl mb-6">🎨</div>
+                    <h3 class="text-2xl font-semibold mb-2">Simon</h3>
+                    <p class="opacity-80">Répète les séquences de couleurs de plus en plus longues. Attention et rapidité !</p>
+                    <span class="inline-block mt-6 text-sm bg-pink-300 text-purple-900 px-4 py-1.5 rounded-full font-medium">Mémoire auditive/visuelle</span>
+                </a>
 
-<p class="section-label">Projets</p>
+                <!-- Quiz -->
+                <a href="https://pierreg78-maker.github.io/Atelier/Quiz/" class="card bg-white/10 backdrop-blur-md rounded-3xl p-8 border border-white/20 hover:border-emerald-300">
+                    <div class="text-6xl mb-6">❓</div>
+                    <h3 class="text-2xl font-semibold mb-2">Le Quiz Culture</h3>
+                    <p class="opacity-80">Musique des années 50-80, cinéma et secrets du Périgord. Teste tes connaissances !</p>
+                    <span class="inline-block mt-6 text-sm bg-emerald-300 text-purple-900 px-4 py-1.5 rounded-full font-medium">Culture & Évocation</span>
+                </a>
 
-<div class="grid">
- <a class="card" href="https://pierreg78-maker.github.io/Atelier/" target="_blank">
-    <div class="card-icon icon-purple"><i class="ti ti-volume" aria-hidden="true"></i></div>
-    <p class="card-title">L'atelier mémoire</p>
-    <p class="card-desc">Portail de jeux de stimulation cognitive à l'attention des personnes âgées.</p>
-    <div class="card-link"><i class="ti ti-external-link" aria-hidden="true"></i> Voir le projet</div>
-  </a> 
- 
- <a class="card" href="https://pierreg78-maker.github.io/Text_to_speech_3000/" target="_blank">
-    <div class="card-icon icon-purple"><i class="ti ti-volume" aria-hidden="true"></i></div>
-    <p class="card-title">Text to Speech 3000</p>
-    <p class="card-desc">Une application web de synthèse vocale qui convertit du texte en parole avec plusieurs voix disponibles, idéale pour la lecture à voix haute ou l'accessibilité.</p>
-    <div class="card-link"><i class="ti ti-external-link" aria-hidden="true"></i> Voir le projet</div>
-  </a>
+                <!-- Attrape-souris -->
+                <a href="https://pierreg78-maker.github.io/Atelier/Attrape-souris/" class="card bg-white/10 backdrop-blur-md rounded-3xl p-8 border border-white/20 hover:border-orange-300">
+                    <div class="text-6xl mb-6">🐭</div>
+                    <h3 class="text-2xl font-semibold mb-2">Attrape-souris</h3>
+                    <p class="opacity-80">Clique sur les souris qui apparaissent avant qu'elles ne filent ! Réflexes au top.</p>
+                    <span class="inline-block mt-6 text-sm bg-orange-300 text-purple-900 px-4 py-1.5 rounded-full font-medium">Réflexes</span>
+                </a>
 
-  <a class="card" href="https://pierreg78-maker.github.io/Casse-briques/" target="_blank">
-    <div class="card-icon icon-coral"><i class="ti ti-device-gamepad-2" aria-hidden="true"></i></div>
-    <p class="card-title">Casse-briques</p>
-    <p class="card-desc">Un jeu de casse-briques classique. Rien à ajouter</p>
-    <div class="card-link"><i class="ti ti-external-link" aria-hidden="true"></i> Voir le projet</div>
-  </a>
-</div>
+                <!-- L'Intrus -->
+                <a href="https://pierreg78-maker.github.io/Atelier/Intrus/" class="card bg-white/10 backdrop-blur-md rounded-3xl p-8 border border-white/20 hover:border-sky-300">
+                    <div class="text-6xl mb-6">🔍</div>
+                    <h3 class="text-2xl font-semibold mb-2">L'Intrus</h3>
+                    <p class="opacity-80">Repère le mot qui n'a rien à faire dans la liste. Logique et langage.</p>
+                    <span class="inline-block mt-6 text-sm bg-sky-300 text-purple-900 px-4 py-1.5 rounded-full font-medium">Logique</span>
+                </a>
+            </div>
+        </section>
 
-<div class="cv-row">
-  <a class="cv-card" href="#" onclick="alert('CV bientôt disponible !')">
-    <div class="cv-icon"><i class="ti ti-file-text" aria-hidden="true"></i></div>
-    <div class="cv-text">
-      <p class="cv-title">Mon CV</p>
-      <p class="cv-sub">Parcours, compétences et expériences</p>
-    </div>
-    <i class="ti ti-arrow-right cv-arrow" aria-hidden="true"></i>
-  </a>
-</div>
+        <!-- Section Créatif -->
+        <section class="mb-16">
+            <h2 class="text-4xl font-bold mb-8 flex items-center gap-3">
+                <i class="fas fa-palette text-pink-300"></i> Atelier Créatif
+            </h2>
+            <a href="https://pierreg78-maker.github.io/atelier_crea/" class="card block bg-gradient-to-br from-pink-500 to-purple-600 rounded-3xl p-10 border border-white/30 max-w-lg mx-auto text-center">
+                <div class="text-7xl mb-6">🎨🌸🎵</div>
+                <h3 class="text-3xl font-bold mb-3">Découvre l'Atelier Créatif</h3>
+                <p class="text-lg opacity-90">Mandalas colorés, Toile Musicale, Jardin Virtuel… Laisse libre cours à ton imagination !</p>
+                <span class="inline-block mt-8 bg-white text-purple-700 font-semibold px-8 py-3 rounded-2xl hover:bg-yellow-300 transition-colors">Entrer dans l'Atelier →</span>
+            </a>
+        </section>
+
+        <!-- Section Divers -->
+        <section>
+            <h2 class="text-4xl font-bold mb-8 flex items-center gap-3">
+                <i class="fas fa-gamepad text-lime-300"></i> Divers
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+
+                <!-- Casse-briques -->
+                <a href="https://pierreg78-maker.github.io/Casse-briques/" class="card bg-white/10 backdrop-blur-md rounded-3xl p-8 border border-white/20 hover:border-lime-300 text-center">
+                    <div class="text-6xl mb-6">🧱</div>
+                    <h3 class="text-2xl font-semibold mb-2">Casse-Briques</h3>
+                    <p class="opacity-80">Le classique intemporel revisité. Détruis les briques avec style !</p>
+                </a>
+
+                <!-- Jeu des Définitions -->
+                <a href="https://pierreg78-maker.github.io/Definitions/" class="card bg-white/10 backdrop-blur-md rounded-3xl p-8 border border-white/20 hover:border-violet-300 text-center">
+                    <div class="text-6xl mb-6">📖</div>
+                    <h3 class="text-2xl font-semibold mb-2">Jeu des Définitions</h3>
+                    <p class="opacity-80">Retrouve le mot caché à partir de sa définition. Vocabulaire & culture.</p>
+                </a>
+
+                <!-- Synthèse Vocale -->
+                <a href="https://pierreg78-maker.github.io/Text_to_speech_3000/" class="card bg-white/10 backdrop-blur-md rounded-3xl p-8 border border-white/20 hover:border-cyan-300 text-center">
+                    <div class="text-6xl mb-6">🔊</div>
+                    <h3 class="text-2xl font-semibold mb-2">Synthèse Vocale 3000</h3>
+                    <p class="opacity-80">Transforme tes textes en voix naturelle gratuitement. Idéal pour écouter ou créer !</p>
+                </a>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="text-center py-10 opacity-75 text-sm">
+        °°° Jeux gratuits à destination des personnes atteintes de maladies dégénaratives °°°
+    </footer>
+
+</body>
+</html>
