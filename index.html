@@ -3,141 +3,439 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Accueil jeux - Pierre G.</title>
+    <title>Pierre G. - Créateur d'expériences numériques</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        navy: '#1B2A4A',
+                        navyLight: '#243659',
+                        navyDark: '#131D35',
+                        accent: '#E87722',
+                        accentHover: '#D06A1B',
+                        mint: '#A8D5BA',
+                        mintDark: '#7BC89C',
+                    },
+                    fontFamily: {
+                        sans: ['DM Sans', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
     <style>
-        body {
-            background: linear-gradient(135deg, #32a0a8 0%, #e3cd0b 100%);
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'DM Sans', sans-serif; background-color: #1B2A4A; color: #ffffff; }
+
+        .card-link {
+            display: block;
+            text-decoration: none;
+            color: inherit;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+            border: 1px solid rgba(255,255,255,0.08);
         }
-        .card {
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        .card-link:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.3);
+            border-color: #E87722;
         }
-        .card:hover {
-            transform: translateY(-12px) scale(1.05);
-            box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.4);
+        .card-link:hover .card-title {
+            color: #E87722;
         }
-        .hero {
-            background: rgba(255,255,255,0.15);
-            backdrop-filter: blur(12px);
+        .card-link:hover .card-arrow {
+            transform: translateX(4px);
+            color: #E87722;
+        }
+        .card-link:hover .card-icon svg {
+            color: rgba(232,119,34,0.4);
+        }
+        .card-arrow {
+            transition: transform 0.3s ease, color 0.3s ease;
+        }
+        .card-icon svg {
+            transition: color 0.3s ease;
+        }
+
+        .nav-link {
+            position: relative;
+            transition: color 0.3s ease;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: #E87722;
+            transition: width 0.3s ease;
+        }
+        .nav-link:hover { color: #E87722; }
+        .nav-link:hover::after { width: 100%; }
+
+        .hero-photo {
+            border: 3px solid rgba(255,255,255,0.1);
+            transition: border-color 0.4s ease;
+        }
+        .hero-photo:hover {
+            border-color: #E87722;
+        }
+
+        .section-label {
+            letter-spacing: 0.15em;
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .mint-line {
+            width: 40px;
+            height: 3px;
+            background-color: #A8D5BA;
+        }
+
+        .don-link {
+            color: #E87722;
+            text-decoration: underline;
+            text-underline-offset: 3px;
+            transition: color 0.2s ease;
+        }
+        .don-link:hover {
+            color: #F09040;
+        }
+
+        @media (max-width: 640px) {
+            .hero-grid { flex-direction: column; text-align: center; }
+            .hero-photo { margin: 0 auto; }
         }
     </style>
 </head>
-<body class="min-h-screen text-white font-sans">
+<body>
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-navy/90 backdrop-blur-md border-b border-white/5">
+        <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+            <a href="#" class="text-lg font-semibold tracking-tight text-white">
+                Pierre G.
+            </a>
+            <div class="flex items-center gap-8">
+                <a href="#projets" class="nav-link text-sm text-white/70 font-medium">Projets</a>
+                <a href="#outils" class="nav-link text-sm text-white/70 font-medium">Outils</a>
+                <a href="#apropos" class="nav-link text-sm text-white/70 font-medium">À propos</a>
+            </div>
+        </div>
+    </nav>
 
     <!-- Hero -->
-    <header class="hero py-16 text-center border-b border-white/30">
-        <div class="max-w-4xl mx-auto px-6">
-            <h1 class="text-6xl font-bold mb-4 flex items-center justify-center gap-4">
-                <span class="bg-white/20 px-6 py-2 rounded-3xl">Atelier Mémoire & Créa</span>
-            </h1>
-            <p class="text-2xl max-w-lg mx-auto">
-                Bonjour, je m'occupe de personnes âgées, parfois malades.
-            </p>
-            <p class="mt-4 text-lg opacity-90">Mon hobby est de créer pour elles des mini-jeux en html.</p>
+    <header class="pt-32 pb-20 px-6">
+        <div class="max-w-6xl mx-auto flex items-center gap-16 hero-grid">
+            <div class="flex-1">
+                <p class="section-label text-xs font-semibold text-mint uppercase mb-4">Développeur créatif</p>
+                <h1 class="text-4xl sm:text-5xl font-bold leading-tight tracking-tight mb-6">
+                    Créer des jeux stimulants,
+                    <span class="text-accent">au service des personnes âgées et en situation de handicap.</span>
+                </h1>
+                <p class="text-white/60 text-lg leading-relaxed max-w-xl mb-8">
+                    Par passion et bénévolement, je développe des jeux accessibles à tous, sans publicité et sans collecte de données personnelles. Conçus avec l'aide de différentes intelligences artificielles, ils fonctionnent directement dans le navigateur, sans rien à installer.
+                </p>
+                <div class="flex items-center gap-4">
+                    <a href="#projets" class="inline-flex items-center gap-2 bg-accent hover:bg-accentHover text-white text-sm font-semibold px-6 py-3 transition-colors">
+                        Voir mes projets
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+                    </a>
+                    <a href="#apropos" class="inline-flex items-center gap-2 text-white/50 hover:text-white text-sm font-medium transition-colors">
+                        En savoir plus
+                    </a>
+                </div>
+            </div>
+            <div class="flex-shrink-0 hidden sm:block">
+                <img src="https://picsum.photos/seed/elderly-smile-young-man-care/320/380.jpg" alt="Accompagnement bienveillant" class="hero-photo rounded-2xl w-64 h-80 object-cover">
+            </div>
         </div>
     </header>
 
-    <main class="max-w-6xl mx-auto px-6 py-12">
+    <!-- Projets / Jeux -->
+    <section id="projets" class="py-20 px-6">
+        <div class="max-w-6xl mx-auto">
+            <div class="mb-14 fade-in">
+                <p class="section-label text-xs font-semibold text-mint uppercase mb-3">Projets</p>
+                <h2 class="text-3xl font-bold tracking-tight">Jeux</h2>
+                <div class="mint-line mt-4"></div>
+                <p class="text-white/50 mt-4 max-w-lg text-base leading-relaxed">Des jeux conçus pour être joués directement dans le navigateur, sans installation. Chacun explore une mécanique différente.</p>
+            </div>
 
-        <!-- Section Jeux de Mémoire -->
-        <section class="mb-16">
-            <h2 class="text-4xl font-bold mb-8 flex items-center gap-3">
-                <i class="fas fa-brain text-yellow-300"></i> Jeux de Mémoire
-            </h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+
+                <!-- 421 -->
+                <a href="https://pierreg78-maker.github.io/421/" target="_blank" class="card-link rounded-xl bg-white/[0.03] overflow-hidden fade-in">
+                    <div class="h-44 flex items-center justify-center">
+                        <div class="card-icon w-16 h-16">
+                            <svg class="w-full h-full" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <rect x="4" y="4" width="40" height="40" rx="8" stroke="currentColor" stroke-width="2" color="rgba(255,255,255,0.2)"/>
+                                <circle cx="16" cy="16" r="2.5" fill="rgba(255,255,255,0.25)"/>
+                                <circle cx="32" cy="32" r="2.5" fill="rgba(255,255,255,0.25)"/>
+                                <circle cx="24" cy="24" r="2.5" fill="rgba(255,255,255,0.25)"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="p-5">
+                        <div class="flex items-center justify-between mb-2">
+                            <h3 class="card-title text-base font-semibold transition-colors">421</h3>
+                            <svg class="card-arrow w-4 h-4 text-white/30" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+                        </div>
+                        <p class="text-white/45 text-sm leading-relaxed">Le classique jeu de dés revisité en version web. Lancez les dés, tentez votre chance.</p>
+                    </div>
+                </a>
+
+                <!-- Roue de la fortune -->
+                <a href="https://pierreg78-maker.github.io/la_roue_de_la_fortune/" target="_blank" class="card-link rounded-xl bg-white/[0.03] overflow-hidden fade-in">
+                    <div class="h-44 flex items-center justify-center">
+                        <div class="card-icon w-16 h-16">
+                            <svg class="w-full h-full" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="24" cy="24" r="18" stroke="rgba(255,255,255,0.2)" stroke-width="2"/>
+                                <path d="M24 6 A18 18 0 0 1 42 24 L24 24 Z" fill="rgba(232,119,34,0.2)"/>
+                                <path d="M42 24 A18 18 0 0 1 24 42 L24 24 Z" fill="rgba(168,213,186,0.2)"/>
+                                <path d="M24 42 A18 18 0 0 1 6 24 L24 24 Z" fill="rgba(232,119,34,0.12)"/>
+                                <path d="M6 24 A18 18 0 0 1 24 6 L24 24 Z" fill="rgba(168,213,186,0.12)"/>
+                                <circle cx="24" cy="24" r="3" fill="rgba(255,255,255,0.25)"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="p-5">
+                        <div class="flex items-center justify-between mb-2">
+                            <h3 class="card-title text-base font-semibold transition-colors">La Roue de la Fortune</h3>
+                            <svg class="card-arrow w-4 h-4 text-white/30" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+                        </div>
+                        <p class="text-white/45 text-sm leading-relaxed">Faites tourner la roue et laissez le hasard décider. Devinez des expressions courantes, des titres, des lieux, etc.</p>
+                    </div>
+                </a>
+
+                <!-- Casse-briques santé -->
+                <a href="https://pierreg78-maker.github.io/casse-briques_sante/" target="_blank" class="card-link rounded-xl bg-white/[0.03] overflow-hidden fade-in">
+                    <div class="h-44 flex items-center justify-center">
+                        <div class="card-icon w-16 h-16">
+                            <svg class="w-full h-full" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <rect x="4" y="4" width="18" height="8" rx="2" stroke="rgba(232,119,34,0.3)" stroke-width="1.5" fill="rgba(232,119,34,0.1)"/>
+                                <rect x="26" y="4" width="18" height="8" rx="2" stroke="rgba(168,213,186,0.3)" stroke-width="1.5" fill="rgba(168,213,186,0.1)"/>
+                                <rect x="4" y="16" width="18" height="8" rx="2" stroke="rgba(168,213,186,0.3)" stroke-width="1.5" fill="rgba(168,213,186,0.1)"/>
+                                <rect x="26" y="16" width="18" height="8" rx="2" stroke="rgba(232,119,34,0.3)" stroke-width="1.5" fill="rgba(232,119,34,0.1)"/>
+                                <rect x="4" y="28" width="18" height="8" rx="2" stroke="rgba(232,119,34,0.3)" stroke-width="1.5" fill="rgba(232,119,34,0.1)"/>
+                                <rect x="26" y="28" width="12" height="8" rx="2" stroke="rgba(168,213,186,0.3)" stroke-width="1.5" fill="rgba(168,213,186,0.1)"/>
+                                <rect x="16" y="40" width="16" height="4" rx="2" fill="rgba(255,255,255,0.25)"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="p-5">
+                        <div class="flex items-center justify-between mb-2">
+                            <h3 class="card-title text-base font-semibold transition-colors">Casse-briques Santé</h3>
+                            <svg class="card-arrow w-4 h-4 text-white/30" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+                        </div>
+                        <p class="text-white/45 text-sm leading-relaxed">Un casse-briques avec une thématique santé.</p>
+                    </div>
+                </a>
+
+                <!-- Ma carte postale -->
+                <a href="https://pierreg78-maker.github.io/ma_carte_postale/" target="_blank" class="card-link rounded-xl bg-white/[0.03] overflow-hidden fade-in">
+                    <div class="h-44 flex items-center justify-center">
+                        <div class="card-icon w-16 h-16">
+                            <svg class="w-full h-full" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <rect x="4" y="10" width="40" height="28" rx="3" stroke="rgba(255,255,255,0.2)" stroke-width="2" fill="none"/>
+                                <path d="M4 13L24 28L44 13" stroke="rgba(255,255,255,0.2)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                                <rect x="30" y="26" width="12" height="8" rx="1" stroke="rgba(232,119,34,0.3)" stroke-width="1.5" fill="rgba(232,119,34,0.08)"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="p-5">
+                        <div class="flex items-center justify-between mb-2">
+                            <h3 class="card-title text-base font-semibold transition-colors">Ma Carte Postale</h3>
+                            <svg class="card-arrow w-4 h-4 text-white/30" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+                        </div>
+                        <p class="text-white/45 text-sm leading-relaxed">Créez et personnalisez votre propre carte postale numérique en quelques clics.</p>
+                    </div>
+                </a>
+
+                <!-- Pixel Art -->
+                <a href="https://pierreg78-maker.github.io/pixel_art/" target="_blank" class="card-link rounded-xl bg-white/[0.03] overflow-hidden fade-in">
+                    <div class="h-44 flex items-center justify-center">
+                        <div class="card-icon w-16 h-16">
+                            <svg class="w-full h-full" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <rect x="6" y="6" width="10" height="10" rx="1" fill="rgba(232,119,34,0.25)"/>
+                                <rect x="19" y="6" width="10" height="10" rx="1" stroke="rgba(255,255,255,0.2)" stroke-width="1.5" fill="none"/>
+                                <rect x="32" y="6" width="10" height="10" rx="1" fill="rgba(168,213,186,0.15)"/>
+                                <rect x="6" y="19" width="10" height="10" rx="1" stroke="rgba(255,255,255,0.2)" stroke-width="1.5" fill="none"/>
+                                <rect x="19" y="19" width="10" height="10" rx="1" fill="rgba(168,213,186,0.2)"/>
+                                <rect x="32" y="19" width="10" height="10" rx="1" stroke="rgba(255,255,255,0.2)" stroke-width="1.5" fill="none"/>
+                                <rect x="6" y="32" width="10" height="10" rx="1" fill="rgba(255,255,255,0.08)"/>
+                                <rect x="19" y="32" width="10" height="10" rx="1" stroke="rgba(255,255,255,0.2)" stroke-width="1.5" fill="none"/>
+                                <rect x="32" y="32" width="10" height="10" rx="1" fill="rgba(232,119,34,0.18)"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="p-5">
+                        <div class="flex items-center justify-between mb-2">
+                            <h3 class="card-title text-base font-semibold transition-colors">Pixel Art</h3>
+                            <svg class="card-arrow w-4 h-4 text-white/30" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+                        </div>
+                        <p class="text-white/45 text-sm leading-relaxed">Un éditeur de pixel art fonctionnel directement dans votre navigateur. Dessinez, créez, exportez.</p>
+                    </div>
+                </a>
+
                 <!-- Memory -->
-                <a href="https://pierreg78-maker.github.io/Memory/" class="card bg-white/10 backdrop-blur-md rounded-3xl p-8 border border-white/20 hover:border-yellow-300">
-                    <div class="text-6xl mb-6">🃏</div>
-                    <h3 class="text-2xl font-semibold mb-2">Memory</h3>
-                    <p class="opacity-80">Retrouvez les paires de cartes identiques et entraînez votre mémoire visuelle !</p>
-                    <span class="inline-block mt-6 text-sm bg-yellow-300 text-purple-900 px-4 py-1.5 rounded-full font-medium">Concentration</span>
+                <a href="https://pierreg78-maker.github.io/Memory/" target="_blank" class="card-link rounded-xl bg-white/[0.03] overflow-hidden fade-in">
+                    <div class="h-44 flex items-center justify-center">
+                        <div class="card-icon w-16 h-16">
+                            <svg class="w-full h-full" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <rect x="12" y="8" width="26" height="32" rx="3" stroke="rgba(255,255,255,0.1)" stroke-width="1.5" fill="none"/>
+                                <rect x="8" y="12" width="26" height="32" rx="3" stroke="rgba(255,255,255,0.2)" stroke-width="2" fill="none"/>
+                                <circle cx="21" cy="28" r="5" stroke="rgba(232,119,34,0.3)" stroke-width="1.5" fill="none"/>
+                                <path d="M18 28L20 30L24 26" stroke="rgba(232,119,34,0.35)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="p-5">
+                        <div class="flex items-center justify-between mb-2">
+                            <h3 class="card-title text-base font-semibold transition-colors">Memory</h3>
+                            <svg class="card-arrow w-4 h-4 text-white/30" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+                        </div>
+                        <p class="text-white/45 text-sm leading-relaxed">Le jeu de mémoire classique. Retrouvez les paires en un minimum de coups.</p>
+                    </div>
                 </a>
 
                 <!-- Simon -->
-                <a href="https://pierreg78-maker.github.io/Simon2/" class="card bg-white/10 backdrop-blur-md rounded-3xl p-8 border border-white/20 hover:border-pink-300">
-                    <div class="text-6xl mb-6">🎨</div>
-                    <h3 class="text-2xl font-semibold mb-2">Simon</h3>
-                    <p class="opacity-80">Répètez les séquences de couleurs de plus en plus longues. Attention et rapidité !</p>
-                    <span class="inline-block mt-6 text-sm bg-pink-300 text-purple-900 px-4 py-1.5 rounded-full font-medium">Mémoire auditive/visuelle</span>
+                <a href="https://pierreg78-maker.github.io/Simon2/" target="_blank" class="card-link rounded-xl bg-white/[0.03] overflow-hidden fade-in">
+                    <div class="h-44 flex items-center justify-center">
+                        <div class="card-icon w-16 h-16">
+                            <svg class="w-full h-full" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="24" cy="24" r="18" stroke="rgba(255,255,255,0.15)" stroke-width="2" fill="none"/>
+                                <path d="M24 6 A18 18 0 0 1 42 24 L24 24 Z" fill="rgba(232,119,34,0.25)"/>
+                                <path d="M42 24 A18 18 0 0 1 24 42 L24 24 Z" fill="rgba(168,213,186,0.25)"/>
+                                <path d="M24 42 A18 18 0 0 1 6 24 L24 24 Z" fill="rgba(232,119,34,0.12)"/>
+                                <path d="M6 24 A18 18 0 0 1 24 6 L24 24 Z" fill="rgba(168,213,186,0.15)"/>
+                                <circle cx="24" cy="24" r="4" fill="#1B2A4A" stroke="rgba(255,255,255,0.2)" stroke-width="1.5"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="p-5">
+                        <div class="flex items-center justify-between mb-2">
+                            <h3 class="card-title text-base font-semibold transition-colors">Simon</h3>
+                            <svg class="card-arrow w-4 h-4 text-white/30" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+                        </div>
+                        <p class="text-white/45 text-sm leading-relaxed">Testez votre mémoire visuelle et auditive. Reproduisez une séquence de plus en plus longue.</p>
+                    </div>
                 </a>
 
-                <!-- Quiz -->
-                <a href="https://pierreg78-maker.github.io/quizz/" class="card bg-white/10 backdrop-blur-md rounded-3xl p-8 border border-white/20 hover:border-emerald-300">
-                    <div class="text-6xl mb-6">❓</div>
-                    <h3 class="text-2xl font-semibold mb-2">Le Quiz Culture</h3>
-                    <p class="opacity-80">Musique des années 50-80, cinéma et secrets du Périgord. Testez vos connaissances !</p>
-                    <span class="inline-block mt-6 text-sm bg-emerald-300 text-purple-900 px-4 py-1.5 rounded-full font-medium">Culture & Évocation</span>
-                </a>
-
-                <!-- Attrape-souris -->
-                <a href="https://pierreg78-maker.github.io/wackamole/" class="card bg-white/10 backdrop-blur-md rounded-3xl p-8 border border-white/20 hover:border-orange-300">
-                    <div class="text-6xl mb-6">🐭</div>
-                    <h3 class="text-2xl font-semibold mb-2">Attrape-souris</h3>
-                    <p class="opacity-80">Cliquez sur les souris qui apparaissent avant qu'elles ne filent ! Vite vite !</p>
-                    <span class="inline-block mt-6 text-sm bg-orange-300 text-purple-900 px-4 py-1.5 rounded-full font-medium">Réflexes</span>
-                </a>
-
-                <!-- L'Intrus -->
-                <a href="https://pierreg78-maker.github.io/intrus/" class="card bg-white/10 backdrop-blur-md rounded-3xl p-8 border border-white/20 hover:border-sky-300">
-                    <div class="text-6xl mb-6">🔍</div>
-                    <h3 class="text-2xl font-semibold mb-2">L'Intrus</h3>
-                    <p class="opacity-80">Repèrez le mot qui n'a rien à faire dans la liste.</p>
-                    <span class="inline-block mt-6 text-sm bg-sky-300 text-purple-900 px-4 py-1.5 rounded-full font-medium">Logique</span>
-                </a>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- Section Créatif -->
-        <section class="mb-16">
-            <h2 class="text-4xl font-bold mb-8 flex items-center gap-3">
-                <i class="fas fa-palette text-pink-300"></i> Atelier Créatif
-            </h2>
-            <a href="https://pierreg78-maker.github.io/atelier_crea/" class="card block bg-gradient-to-br from-pink-500 to-purple-600 rounded-3xl p-10 border border-white/30 max-w-lg mx-auto text-center">
-                <div class="text-7xl mb-6">🎨🌸🎵</div>
-                <h3 class="text-3xl font-bold mb-3">Découvrez l'Atelier Créatif</h3>
-                <p class="text-lg opacity-90">Mandalas colorés, Toile Musicale, Jardin Virtuel… Laissez libre cours à votre imagination !</p>
-                <span class="inline-block mt-8 bg-white text-purple-700 font-semibold px-8 py-3 rounded-2xl hover:bg-yellow-300 transition-colors">Entrer dans l'Atelier →</span>
-            </a>
-        </section>
-
-        <!-- Section Divers -->
-        <section>
-            <h2 class="text-4xl font-bold mb-8 flex items-center gap-3">
-                <i class="fas fa-gamepad text-lime-300"></i> Divers
-            </h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-
-                <!-- Casse-briques -->
-                <a href="https://pierreg78-maker.github.io/Casse-briques/" class="card bg-white/10 backdrop-blur-md rounded-3xl p-8 border border-white/20 hover:border-lime-300 text-center">
-                    <div class="text-6xl mb-6">🧱</div>
-                    <h3 class="text-2xl font-semibold mb-2">Casse-Briques</h3>
-                    <p class="opacity-80">Le classique intemporel revisité. Détruisez les briques avec style !</p>
-                </a>
-
-                <!-- Jeu des Définitions -->
-                <a href="https://pierreg78-maker.github.io/Definitions/" class="card bg-white/10 backdrop-blur-md rounded-3xl p-8 border border-white/20 hover:border-violet-300 text-center">
-                    <div class="text-6xl mb-6">📖</div>
-                    <h3 class="text-2xl font-semibold mb-2">Jeu des Définitions</h3>
-                    <p class="opacity-80">Retrouvez le mot caché à partir de sa définition. Vocabulaire & culture.</p>
-                </a>
-
-                <!-- Synthèse Vocale -->
-                <a href="https://pierreg78-maker.github.io/Text_to_speech_3000/" class="card bg-white/10 backdrop-blur-md rounded-3xl p-8 border border-white/20 hover:border-cyan-300 text-center">
-                    <div class="text-6xl mb-6">🔊</div>
-                    <h3 class="text-2xl font-semibold mb-2">Synthèse Vocale 3000</h3>
-                    <p class="opacity-80">Faites lire un texte par une voix synthétique. Fenêtre de 3000 mots. Idéal pour écouter ou créer !</p>
-                </a>
+    <!-- Outils -->
+    <section id="outils" class="py-20 px-6 bg-navyDark/50">
+        <div class="max-w-6xl mx-auto">
+            <div class="mb-14 fade-in">
+                <p class="section-label text-xs font-semibold text-mint uppercase mb-3">Utilitaires</p>
+                <h2 class="text-3xl font-bold tracking-tight">Outils pratiques</h2>
+                <div class="mint-line mt-4"></div>
+                <p class="text-white/50 mt-4 max-w-lg text-base leading-relaxed">Des petits outils conçus pour simplifier le quotidien, construits avec la même exigence que mes projets plus ambitieux.</p>
             </div>
-        </section>
 
-    </main>
+            <div class="grid sm:grid-cols-2 gap-6 max-w-3xl">
 
-    <footer class="text-center py-10 opacity-75 text-sm">
-        Jeux gratuits et open-source (Licence MIT) à destination des personnes atteintes de maladies dégénaratives.<br>
-        Vous pouvez <a href="https://gofund.me/7878b3971" target="_blank">me soutenir et m'encourager ici &#129309</a>.
+                <!-- Text to Speech 3000 -->
+                <a href="https://pierreg78-maker.github.io/text_to_speech_3000/" target="_blank" class="card-link rounded-xl bg-white/[0.03] p-6 flex items-start gap-5 fade-in">
+                    <div class="flex-shrink-0 w-12 h-12 rounded-lg bg-accent/10 flex items-center justify-center">
+                        <svg class="w-5 h-5 text-accent" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m-4 0h8m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z"/></svg>
+                    </div>
+                    <div class="flex-1">
+                        <div class="flex items-center justify-between mb-1">
+                            <h3 class="card-title text-base font-semibold transition-colors">Text to Speech 3000</h3>
+                            <svg class="card-arrow w-4 h-4 text-white/30" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+                        </div>
+                        <p class="text-white/45 text-sm leading-relaxed">Convertissez du texte en parole directement depuis votre navigateur.</p>
+                    </div>
+                </a>
+
+                <!-- Convertisseur GitHub vers Raw -->
+                <a href="https://pierreg78-maker.github.io/convertisseur_github_vers_raw/" target="_blank" class="card-link rounded-xl bg-white/[0.03] p-6 flex items-start gap-5 fade-in">
+                    <div class="flex-shrink-0 w-12 h-12 rounded-lg bg-mint/10 flex items-center justify-center">
+                        <svg class="w-5 h-5 text-mint" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"/></svg>
+                    </div>
+                    <div class="flex-1">
+                        <div class="flex items-center justify-between mb-1">
+                            <h3 class="card-title text-base font-semibold transition-colors">Convertisseur GitHub vers Raw</h3>
+                            <svg class="card-arrow w-4 h-4 text-white/30" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+                        </div>
+                        <p class="text-white/45 text-sm leading-relaxed">Transformez un lien GitHub en lien d'accès direct aux fichiers bruts en un clic.</p>
+                    </div>
+                </a>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- À propos -->
+    <section id="apropos" class="py-20 px-6">
+        <div class="max-w-6xl mx-auto">
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <div class="fade-in">
+                    <p class="section-label text-xs font-semibold text-mint uppercase mb-3">À propos</p>
+                    <h2 class="text-3xl font-bold tracking-tight mb-6">Créer pour le plaisir de comprendre</h2>
+                    <div class="mint-line mb-6"></div>
+                    <p class="text-white/60 leading-relaxed mb-4">
+                        Je développe des projets web par curiosité et par goût du concret. Cette approche m'a amené à explorer des domaines variés : la logique de jeu, l'interaction utilisateur, la synthèse vocale, le traitement de fichiers. Je privilégie la simplicité d'accès et la finition plutôt que la complexité pour elle-même.
+                    </p>
+                    <p class="text-white/60 leading-relaxed mb-4">
+                        Ce portfolio est le reflet de ce cheminement. Il évolue au rythme de mes envies de créer, toujours au service des personnes dont je m'occupe.
+                    </p>
+                    <p class="text-white/60 leading-relaxed">
+                        Pour soutenir ma démarche gratuite et bénévole, vous pouvez <a href="https://www.gofundme.com/f/aide-aux-personnes-agees-atteintes-de-maladies-degeneratives?attribution_id=sl:94f4d0bc-9066-4a8b-8eca-9a5c099ec727&lang=fr_FR&ts=1782768191&utm_campaign=man_sharesheet_dash&utm_content=amp20_t1&utm_medium=customer&utm_source=copy_link" target="_blank" class="don-link">faire un don sur mon gofundMe</a>.
+                    </p>
+                </div>
+                <div class="fade-in hidden lg:block">
+                    <img src="https://picsum.photos/seed/workspace-clean-code/600/450.jpg" alt="Espace de travail" class="rounded-2xl w-full object-cover border border-white/5">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="border-t border-white/5 py-10 px-6">
+        <div class="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+            <p class="text-white/30 text-sm">Pierre G. - Tous les projets sont accessibles gratuitement en ligne.</p>
+            <div class="flex items-center gap-6">
+                <a href="https://github.com/pierreg78-maker" target="_blank" class="text-white/30 hover:text-accent text-sm transition-colors">GitHub</a>
+                <a href="#projets" class="text-white/30 hover:text-accent text-sm transition-colors">Projets</a>
+                <a href="#outils" class="text-white/30 hover:text-accent text-sm transition-colors">Outils</a>
+            </div>
+        </div>
     </footer>
+
+    <!-- Scroll animation -->
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry, index) => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => {
+                        entry.target.classList.add('visible');
+                    }, index * 80);
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+    </script>
 
 </body>
 </html>
